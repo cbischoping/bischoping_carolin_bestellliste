@@ -18,9 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'artikel',
+        'beschreibung',
+        'bestellt',
     ];
 
     /**
@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bestellliste()
+
+    {
+        return $this->hasMany(bestellungen::class);
+
+    }
 }
