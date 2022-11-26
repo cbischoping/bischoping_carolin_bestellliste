@@ -41,7 +41,7 @@ class bestellController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // Artikel der Liste Hinzufügen oder einfügen
     {
         $this->validate($request, [
             'Artikel' => 'required|string|max:255',
@@ -81,10 +81,13 @@ class bestellController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) //Artikel der Liste bearbeiten und umändern
     {
-        //
+        $bestellen = Bestellliste::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        return view('edit_bestellung', compact('bestellen'));
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -93,9 +96,25 @@ class bestellController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)  //Artikel der Liste verändern oder erneuern
     {
-        //
+        $this->validate($request, [
+            'Artikel' => 'required|string|max:255',
+            'Beschreibung' => 'nullable|string',
+            'hinzugefügt' => 'nullable',
+        ]);
+
+        $bestellen = Bestellliste::find($id);
+        $bestellen->Artikel = $request->input('Artikel');
+        $bestellen->Beschreibung = $request->input('Beschreibung');
+
+        if($request->has('hinzugefügt')){
+            $bestellen->completed = true;
+        }
+
+        $bestellen->save();
+
+        return back()->with('success', 'Artikel wurde erfolgreich geändert');
     }
 
     /**
