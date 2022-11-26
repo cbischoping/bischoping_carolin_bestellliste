@@ -26,18 +26,22 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>Schrauben bestellen</td>
-                                <td>
-                                    <a href="" class="btn btn-sm btn-outline-success">Bearbeiten</a> <!-- Bearbeitungsbutton -->
-                                    <a href="" class="btn btn-sm btn-outline-danger">Löschen</a> <!-- Löschbutton -->
-                                
 
-                                </td>
-                            </tr> 
+                            @forelse ($bestellen as $bestellen)
+                                <tr>
+                                    <td> {{$bestellen->Artikel}}</td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-outline-success">Bearbeiten</a> <!-- Bearbeitungsbutton -->
+                                        <a href="" class="btn btn-sm btn-outline-danger">Löschen</a> <!-- Löschbutton -->
+                                
+                                    </td>
+                                </tr> 
+                                @empty
+                                <tr>
+                                    <td> Kein Artikel </td>
+                                </tr>
+                            @endforelse 
                         </tbody>
-                        
-                    
                 </div>
             </div>
         </div>

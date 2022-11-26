@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\bestellliste;
+use Illuminate\Support\Facades\Auth;
+
 
 class bestellController extends Controller
 {
@@ -18,7 +21,8 @@ class bestellController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $bestellen = Bestellliste::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('home', compact('bestellen'));
     }
 
     /**
@@ -39,7 +43,25 @@ class bestellController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'Artikel' => 'required|string|max:255',
+            'Beschreibung' => 'nullable|string',
+            'hinzugefügt' => 'nullable',
+        ]);
+
+        $bestellen = new Bestellliste;
+        $bestellen->Artikel = $request->input('Artikel');
+        $bestellen->Beschreibung = $request->input('Beschreibung');
+
+        if($request->has('hinzugefügt')){
+            $bestellen->completed = true;
+        }
+
+        $bestellen->user_id = Auth::user()->id;
+
+        $bestellen->save();
+
+        return back()->with('success', 'Artikel wurde erfolgreich hinzugefügt');
     }
 
     /**
