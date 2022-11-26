@@ -29,10 +29,10 @@
 
                             @forelse ($bestellen as $bestellen)
                                 <tr>
-                                    <td> {{$bestellen->Artikel}}</td>
+                                    <td> {{ $bestellen->Artikel }}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-outline-success">Bearbeiten</a> <!-- Bearbeitungsbutton -->
-                                        <a href="" class="btn btn-sm btn-outline-danger">Löschen</a> <!-- Löschbutton -->
+                                        <a href="{{ route('bestellen.edit', $bestellen->id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-pencil-square-o"></i></a> <!-- Bearbeitungsbutton -->
+                                        <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a> <!-- Löschbutton -->
                                 
                                     </td>
                                 </tr> 
