@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <h5 class="card=header">
-                <a href="{{route('bestellen.create')}}" class="btn btn-sm btn-outline-primarry">Artikel hinzufügen</a>
+                <a href="{{route('bestellen.create')}}" class="btn btn-sm btn-outline-primarry">Artikel hinzufügen</a> <!-- Überschrift hinzugefügt -->  
                 </h5>
 
 
@@ -19,6 +19,25 @@
                         </div>
                     @endif
 
+                    <table class="table table-hover table-borderless">
+                        <thead>
+                            <th scope="col">Bestellungen</th> <!-- Tabellen Überschrift hinzugefügt -->
+                            <th scope="col"></th> 
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Schrauben bestellen</td>
+                                <td>
+                                    <a href="" class="btn btn-sm btn-outline-success">Bearbeiten</a> <!-- Bearbeitungsbutton -->
+                                    <a href="" class="btn btn-sm btn-outline-danger">Löschen</a> <!-- Löschbutton ->
+                                
+
+                                </td>
+                            </tr> 
+                        </tbody>
+                        
+                    
                 </div>
             </div>
         </div>
