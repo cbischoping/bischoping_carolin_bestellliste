@@ -28,7 +28,7 @@ class bestellController extends Controller
      */
     public function create()
     {
-      //  return view('add_bestellung');
+        return view('add_bestellung'); //Bestellungen hinzufügen
     }
 
     /**
