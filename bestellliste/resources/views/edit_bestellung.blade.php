@@ -23,14 +23,14 @@
                         </div>
                     @endif
 
-                @if(session()->has('success'))
+                @if(session()->has('success')) <!--Bestätigung --> 
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             {{ session()->get('success') }}
                         </div>
                     @endif 
 
-                <form method="POST" action="{{ route('bestellen.update', $bestellen->id) }}">
+                <form method="POST" action="{{ route('bestellen.update', $bestellen->id) }}">  
                         @csrf
                         @method('PUT')
 
@@ -61,7 +61,7 @@
 
                         <div class="form-group row mb-0"> 
                             <div class="col-md-8 offset-md-4"><!-- Artikel auf die Liste hinzugefügen -->  
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-success"> <!--Artikel geändert hinzugefügt --> 
                                     Hinzufügen
                                 </button>
                             </div>

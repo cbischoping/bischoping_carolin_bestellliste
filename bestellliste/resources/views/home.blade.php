@@ -12,8 +12,8 @@
                 </h5>
 
 
-                <div class="card-body">
-                    @if (session('status'))
+                <div class="card-body"> <!--Bestätigung --> 
+                    @if (session('status')) 
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
@@ -26,7 +26,7 @@
                         </div>
                     @endif 
 
-                    <table class="table table-hover table-borderless">  <!-- Tabelle hinzugefügt -->
+                    <table class="table table-hover table-borderless">  <!-- Tabelle wird hinzugefügt -->
                         <thead>
                             <th scope="col">Bestellungen</th> <!-- Tabellen Überschrift hinzugefügt -->
                             <th scope="col"></th> 

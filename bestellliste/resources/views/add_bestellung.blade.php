@@ -30,7 +30,7 @@
                         </div>
                     @endif 
 
-                <form method="POST" action="{{ route('bestellen.store') }}">
+                <form method="POST" action="{{ route('bestellen.store') }}"> 
                         @csrf
 
                         <div class="form-group row">
@@ -38,7 +38,7 @@
 
                             <input id="Artikel" type="Artikel" class="form-control @error('Artikel') is-invalid @enderror" name="Artikel" value="{{ old('email') }}" autocomplete="Artikel" autofocus>
 
-                            @error('Artikel')
+                            @error('Artikel') <!-- Überschrift/ Artikelbezeichnung erstellen --> 
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -50,7 +50,7 @@
 
                             <textarea name="description" id="description" cols="30" rows="10" class="form-control @error('password') is-invalid @enderror" autocomplete="description" value="{{ old('description') }}"></textarea>
 
-                            @error('Beschreibung')
+                            @error('Beschreibung') <!--Beschreibungsfeld erstellen -->  
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
