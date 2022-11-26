@@ -21,6 +21,9 @@ class User extends Authenticatable
         'artikel',
         'beschreibung',
         'bestellt',
+        'name',
+        'email',
+        'password'
     ];
 
     /**

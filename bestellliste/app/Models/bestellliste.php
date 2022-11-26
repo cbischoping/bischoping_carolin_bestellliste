@@ -16,7 +16,7 @@ class bestellliste extends Model
     //    'user_id'
     //];
 
-   protected $guarded = [];
+   protected $guarded = []; // hinzugefügt
 
    public function user()
    {

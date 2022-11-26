@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class bestellController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,7 @@ class bestellController extends Controller
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -23,7 +28,7 @@ class bestellController extends Controller
      */
     public function create()
     {
-        //
+      //  return view('add_bestellung');
     }
 
     /**
