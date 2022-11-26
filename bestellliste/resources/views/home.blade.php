@@ -19,6 +19,13 @@
                         </div>
                     @endif
 
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif 
+
                     <table class="table table-hover table-borderless">  <!-- Tabelle hinzugefügt -->
                         <thead>
                             <th scope="col">Bestellungen</th> <!-- Tabellen Überschrift hinzugefügt -->
@@ -32,7 +39,7 @@
                                 <td><a href="{{ route('bestellen.edit', $bestellen->id) }}" style="color: black">{{ $bestellen->Artikel }}</a></td>
                                     <td>
                                         <a href="{{ route('bestellen.edit', $bestellen->id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-pencil-square-o"></i></a> <!-- Bearbeitungsbutton -->
-                                        <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a> <!-- Löschbutton -->
+                                        <a href="{{ route('bestellen.show', $bestellen->id) }}" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a> <!-- Löschbutton -->
                                 
                                     </td>
                                 </tr> 

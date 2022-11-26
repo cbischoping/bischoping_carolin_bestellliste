@@ -72,7 +72,11 @@ class bestellController extends Controller
      */
     public function show($id)
     {
-        //
+        $bestellen = Bestellliste::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        if(!$bestellen) {
+            abort(404);
+        }
+        return view('delete_bestellung', compact('bestellen'));
     }
 
     /**
@@ -84,6 +88,9 @@ class bestellController extends Controller
     public function edit($id) //Artikel der Liste bearbeiten und umändern
     {
         $bestellen = Bestellliste::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        if(!$bestellen) {
+            abort(404);
+        }
         return view('edit_bestellung', compact('bestellen'));
     }
 
@@ -104,7 +111,7 @@ class bestellController extends Controller
             'hinzugefügt' => 'nullable',
         ]);
 
-        $bestellen = Bestellliste::find($id);
+        $bestellen = Bestellliste::where('id', $id)->where('user_id', Auth::user()->id)->first();
         $bestellen->Artikel = $request->input('Artikel');
         $bestellen->Beschreibung = $request->input('Beschreibung');
 
@@ -125,6 +132,8 @@ class bestellController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bestellen = Bestellliste::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        $bestellen->delete();
+        return redirect()->route('bestellen.index')->with('success', 'Artikel wurde erfolgreich gelöscht');
     }
 }

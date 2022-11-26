@@ -58,15 +58,6 @@
                             @enderror
                         </div>
 
-                        <div class="form-group row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="completed" id="completed" value="{{ old('completed')}}">
-
-                                <label class="form-check-label" for="completed">
-                                    Schon bestellt?
-                                </label>
-                            </div>
-                        </div>
 
                         <div class="form-group row mb-0"> 
                             <div class="col-md-8 offset-md-4"><!-- Artikel auf die Liste hinzugefügen -->  
